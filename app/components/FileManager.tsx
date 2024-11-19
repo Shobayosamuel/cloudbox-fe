@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react';
 import { Upload, File, Share2, Trash2, Download, X } from 'lucide-react';
 import { apiService } from '../services/api';
