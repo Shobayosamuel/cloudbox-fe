@@ -1,3 +1,4 @@
+'use client'
 import { useAuth } from '../contexts/AuthContext';
 import FileManager from '../components/FileManager';
 import { ProtectedRoute } from '../components/ProtectedRoute';
