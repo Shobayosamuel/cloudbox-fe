@@ -2,9 +2,19 @@
 import { useAuth } from '../contexts/AuthContext';
 import FileManager from '../components/FileManager';
 import { ProtectedRoute } from '../components/ProtectedRoute';
+import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; // Render nothing on the server side
+  }
 
   return (
     <ProtectedRoute>
@@ -18,7 +28,7 @@ export default function Dashboard() {
               <div className="flex items-center">
                 <span className="text-gray-700 mr-4">Welcome, {user?.username}</span>
                 <button
-                  onClick={() => useAuth().logout()}
+                  onClick={logout}
                   className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium"
                 >
                   Logout
@@ -29,9 +39,7 @@ export default function Dashboard() {
         </nav>
 
         <main className="py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <FileManager />
-          </div>
+          <FileManager />
         </main>
       </div>
     </ProtectedRoute>
