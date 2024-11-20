@@ -45,6 +45,7 @@ class ApiService {
     );
   }
 
+  
   // Auth endpoints
   async login(username: string, password: string) {
     const response = await this.api.post('/auth/login', { username, password });
