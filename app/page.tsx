@@ -42,7 +42,7 @@ export default function LandingPage() {
               <button onClick={() => router.push('/auth/login')} className="text-gray-700 hover:bg-blue-100 px-3 py-2 rounded-md text-sm font-medium">
                 Login
               </button>
-              <button onClick={() => router.push('/register')} className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
+              <button onClick={() => router.push('/auth/register')} className="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
                 Sign Up
               </button>
             </div>
