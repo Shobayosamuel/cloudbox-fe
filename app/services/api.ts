@@ -8,6 +8,12 @@ class ApiService {
   constructor() {
     this.api = axios.create({
       baseURL: process.env.NEXT_PUBLIC_API_URL,
+      timeout: 30000, // 30 second timeout
+      withCredentials: true, // Important for CORS with credentials
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
     });
 
     this.api.interceptors.request.use((config) => {
