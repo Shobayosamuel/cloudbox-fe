@@ -1,5 +1,6 @@
 // services/api.ts
 import axios, { AxiosInstance } from 'axios';
+import { log } from 'console';
 console.log(process.env.NEXT_PUBLIC_API_URL)
 class ApiService {
   public api: AxiosInstance;
@@ -20,6 +21,7 @@ class ApiService {
     this.api.interceptors.response.use(
       (response) => response,
       async (error) => {
+        console.error('Api request error', error);
         if (error.response?.status === 401) {
           // Try to refresh token
           const refreshToken = localStorage.getItem('refreshToken');
@@ -45,7 +47,7 @@ class ApiService {
     );
   }
 
-  
+
   // Auth endpoints
   async login(username: string, password: string) {
     const response = await this.api.post('/auth/login', { username, password });
